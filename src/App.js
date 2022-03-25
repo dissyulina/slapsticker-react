@@ -2,18 +2,27 @@ import { useState } from "react";
 import { createUseStyles } from "react-jss";
 import { useWebcamCapture } from "./useWebcamCapture";
 // import logo from './logo.svg'
-import logo from "./slap.png";
+import logo from './slap.png'
 
 import { Link, Switch, Route, Redirect } from "react-router-dom";
 
 const useStyles = createUseStyles((theme) => ({
+  '@import': "url('https://fonts.googleapis.com/css2?family=Lobster+Two:wght@400;700&family=Open+Sans&display=swap')",
+
   "@global body": {
     background: theme.palette.background,
     color: theme.palette.text,
-    fontFamily: "sans-serif",
+    fontFamily: "Open Sans",
+    lineHeight: 1.5,
   },
 
   App: {
+    "&  h2": {
+      fontFamily: "Lobster Two",
+      fontWeight: "700",
+      fontSize: "2rem",
+      letterSpacing: "1px",
+    },
     padding: "20px",
     background: theme.palette.primary,
     maxWidth: "800px",
@@ -25,15 +34,25 @@ const useStyles = createUseStyles((theme) => ({
   },
   Header: {
     "&  h1": {
-      fontFamily: "sans-serif",
+      fontFamily: "Lobster Two",
       cursor: "pointer",
       fontSize: "4rem",
+      fontWeight: "700",
+      textAlign: "center",
+    },
+    "&  ul": {
+      listStyle: "none",
+      display: "flex",
+      paddingLeft: "0",
+    },
+    "&  li": {
+      paddingRight: "2rem",
     },
   },
   Main: {
-    background: theme.palette.secondary,
-
     "& canvas": {
+      background: theme.palette.secondary,
+      padding: "1rem",
       width: "100%",
       height: "auto",
     },
@@ -52,8 +71,8 @@ const useStyles = createUseStyles((theme) => ({
     },
   },
   Picture: {
-    background: "black",
-    padding: 4,
+    background: "white",
+    padding: "0.5rem",
     position: "relative",
     display: "inline-block",
     "& h3": {
@@ -69,6 +88,7 @@ const stickers = [logo].map((url) => {
   img.src = url;
   return { img, url };
 });
+
 
 function App(props) {
   // css classes from JSS hook
@@ -90,27 +110,27 @@ function App(props) {
     <div className={classes.App}>
       <header className={classes.Header}>
         <h1>SlapSticker</h1>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/readme">Readme</Link>
+            </li>
+          </ul>
+        </nav>
         <p>
           Have you ever said something so dumb, you just wanted to slap
           yourself? Well now you can!
         </p>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">home</Link>
-            </li>
-            <li>
-              <Link to="/readme">readme</Link>
-            </li>
-          </ul>
-        </nav>
       </header>
       <Switch>
         /** * Main app route */
         <Route path="/" exact>
           <main>
             <section className={classes.Gallery}>
-              Step one: Give it a name
+              <h2>Step 1: Give it a name</h2>
               <input
                 type="text"
                 value={title}
@@ -118,13 +138,15 @@ function App(props) {
               />
             </section>
             <section className={classes.Stickers}>
-              Step 2: select your sticker...
-              <button onClick={() => setSticker(stickers[0])}>
-                <img src={stickers[0].url} />
-              </button>
+              <h2>Step 2: Select your sticker...</h2>
+              {stickers.map((sticker) =>
+                <button onClick={() => setSticker(sticker)}>
+                  <img src={sticker.url} />
+                </button>
+              )}
             </section>
             <section className={classes.Main}>
-              Step three: Slap your self!
+              <h2>Step 3: Slap your self!</h2>
               <video ref={handleVideoRef} />
               <canvas
                 ref={handleCanvasRef}
@@ -134,7 +156,7 @@ function App(props) {
               />
             </section>
             <section className={classes.Gallery}>
-              Step 4: Cherish this moment forever
+              <h2>Step 4: Cherish this moment forever</h2>
               {picture && (
                 <div className={classes.Picture}>
                   <img src={picture.dataUri} />
