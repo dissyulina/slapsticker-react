@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { createUseStyles } from "react-jss";
 import { useWebcamCapture } from "./useWebcamCapture";
-import { FacebookShareButton, PinterestIcon, PinterestShareButton, TwitterShareButton, WhatsappShareButton } from "react-share";
-import { FacebookIcon, TwitterIcon, WhatsappIcon } from "react-share";
+import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, PinterestShareButton } from "react-share";
+import { FacebookIcon, TwitterIcon, WhatsappIcon, PinterestIcon } from "react-share";
 
 import sticker1 from './images/slap-ori.png'
 import sticker2 from './images/slap-orange.png'
@@ -34,8 +34,13 @@ const useStyles = createUseStyles((theme) => ({
     maxWidth: "800px",
     minHeight: "600px",
     margin: "auto",
+    textAlign: "center",
     "& a": {
       textDecoration: "none",
+    },
+    "& button:hover": {
+      transform: "translateY(-0.2rem)",
+      transition: "transform 150ms",
     },
   },
   Header: {
@@ -45,11 +50,14 @@ const useStyles = createUseStyles((theme) => ({
       fontSize: "4rem",
       fontWeight: "700",
       textAlign: "center",
+      marginBottom: "1rem",
     },
     "&  ul": {
       listStyle: "none",
       display: "flex",
+      justifyContent: "right",
       paddingLeft: "0",
+      marginBottom: "2rem",
     },
     "&  li": {
       paddingRight: "2rem",
@@ -57,12 +65,21 @@ const useStyles = createUseStyles((theme) => ({
     "& a": {
       color: theme.palette.text,
     },
+    "& a:hover": {
+      color: theme.palette.button,
+    },
+  },
+  Name: {
+    "& input": {
+      padding: "7px",
+      border: "none",
+    },
   },
   Main: {
     "& canvas": {
       background: theme.palette.secondary,
       padding: "1rem",
-      width: "100%",
+      width: "90%",
       height: "auto",
     },
     "& video": {
@@ -72,6 +89,11 @@ const useStyles = createUseStyles((theme) => ({
   Stickers: {
     "& img": {
       height: "4rem",
+    },
+    "& button": {
+      border: "1px solid #ccc",
+      margin: "5px",
+      cursor: "pointer",
     },
   },
   Gallery: {
@@ -86,18 +108,31 @@ const useStyles = createUseStyles((theme) => ({
     display: "inline-block",
     "& h3": {
       padding: 8,
-      textAlign: "center",
+      textAlign: "start",
       width: "100%",
+      margin: "1rem 0",
+    },
+  },
+  Flex: {
+    display: "flex",
+    alignContent: "center",
+    "& a:hover": {
+      transform: "translateY(-0.2rem)",
+      transition: "transform 150ms",
     },
   },
   DownloadBtn: {
-    padding: "1rem 2rem",
+    padding: "0.75rem 2rem",
     background: theme.palette.button,
     borderRadius: "25px",
     color: "white",
+    margin: "1rem 0"
   },
   Share: {
     textAlign: "center",
+    "& p": {
+      paddingTop: "2rem",
+    }
   },
   ShareBtn: {
     paddingRight: "5px",
@@ -107,6 +142,7 @@ const useStyles = createUseStyles((theme) => ({
 const stickers = [sticker1, sticker2, sticker3, sticker4, sticker5].map((url) => {
   const img = document.createElement("img");
   img.src = url;
+  img.alt = "a slap sticker"
   return { img, url };
 });
 
@@ -147,10 +183,10 @@ function App(props) {
         </p>
       </header>
       <Switch>
-        /** * Main app route */
+        {/* Main app route */}
         <Route path="/" exact>
           <main>
-            <section className={classes.Gallery}>
+            <section className={classes.Name}>
               <h2>Step 1: Give it a name</h2>
               <input
                 type="text"
@@ -160,9 +196,9 @@ function App(props) {
             </section>
             <section className={classes.Stickers}>
               <h2>Step 2: Select your sticker...</h2>
-              {stickers.map((sticker) =>
-                <button onClick={() => setSticker(sticker)}>
-                  <img src={sticker.url} />
+              {stickers.map((sticker, index) =>
+                <button key={index} onClick={() => setSticker(sticker)}>
+                  <img src={sticker.url} alt="a slap sticker" />
                 </button>
               )}
             </section>
@@ -180,40 +216,46 @@ function App(props) {
               <h2>Step 4: Cherish this moment forever</h2>
               {picture && (
                 <div className={classes.Picture}>
-                  <img src={picture.dataUri} />
-                  <h3>{picture.title}</h3>
+                  <img src={picture.dataUri} alt="the captured selfie with the sticker" />
+                  <div className={classes.Flex}>
+                    <h3>{picture.title}</h3>
+                    <a href={picture.dataUri} download target="_blank" rel="noreferrer" role="button" className={classes.DownloadBtn}>Download</a>
+                  </div>
                 </div>
-              )}
-              {picture && (
-                <a href={picture.dataUri} download target="_blank" role="button" className={classes.DownloadBtn}>Download</a>
               )}
             </section>
             <section className={classes.Share}>
               <p>Share this app to your friends who want to slap themselves too!</p>
+              <PinterestShareButton
+                media={"https://dissyulina.github.io/slapsticker-react/static/media/slap-ori.5f0cd602.png"}
+                url={"https://dissyulina.github.io/slapsticker-react/"}
+                description={"Have you ever said something so dumb, you just wanted to slap yourself? Well now you can! Check out SlapSticker!"}>
+                <PinterestIcon size={40} round className={classes.ShareBtn} />
+              </PinterestShareButton>
               <FacebookShareButton
-                url={"https://3000-dissyulina-slapstickerre-lyh5w20js28.ws-eu38.gitpod.io/"}
+                url={"https://dissyulina.github.io/slapsticker-react/"}
                 quote={"Check out this cool app!"}
                 hashtag={"#slapsticker"}
                 description={"Have you ever said something so dumb, you just wanted to slap yourself? Well now you can!"}>
-                <FacebookIcon size={40} round className={classes.ShareBtn}/>
+                <FacebookIcon size={40} round className={classes.ShareBtn} />
               </FacebookShareButton>
               <TwitterShareButton
                 title={"SlapSticker - Check out this cool app!"}
-                url={"https://3000-dissyulina-slapstickerre-lyh5w20js28.ws-eu38.gitpod.io/"}
+                url={"https://dissyulina.github.io/slapsticker-react/"}
                 hashtags={["slapsticker", "slapyourself"]}
                 className={classes.Sharebtn}>
-                <TwitterIcon size={40} round className={classes.ShareBtn}/>
+                <TwitterIcon size={40} round className={classes.ShareBtn} />
               </TwitterShareButton>
               <WhatsappShareButton
-                title={"SlapSticker - Check out this cool app!"} 
-                url={"https://3000-dissyulina-slapstickerre-lyh5w20js28.ws-eu38.gitpod.io/"} 
+                title={"SlapSticker - Check out this cool app!"}
+                url={"https://dissyulina.github.io/slapsticker-react//"}
                 className={classes.Sharebtn}>
-                <WhatsappIcon size={40} round className={classes.ShareBtn}/>
+                <WhatsappIcon size={40} round className={classes.ShareBtn} />
               </WhatsappShareButton>
             </section>
           </main>
         </Route>
-        /** * Readme route */
+        {/* Readme route */}
         <Route path="/readme">
           <main>
             <h2>Devtest Readme</h2>
