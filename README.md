@@ -1,47 +1,52 @@
-# Devtest Readme
+# SlapSticker  
+SlapSticker is an app that lets users to slap stickers on their face, using their webcam. You can view the deployed website [here](https://dissyulina.github.io/slapsticker-react/).  
 
-Hello candidate, Welcome to our little dev test. The goal of this exercise, is to asses your general skill level, and give us something to talk about at our next appointment.
+## What this app should do  
 
-## What this app should do
+### These are the basic functionalities:  
 
-SlapSticker is an app that lets users to slap stickers on their face, using their webcam. Functionality wise the app works, but the ui needs some love. We'd like for you to extend this prototype to make it look and feel it bit better.
+- User can give the captured image a title  
+- User can pick a sticker  
+- User can place the sticker over the webcam image  
+- User can capture the webcam image with sticker  
 
-### These are the basic requirements:
+### And these are the additional features I added to the app:  
 
-- User can pick a sticker
-- User can give the captured image a title
-- User can place the sticker over the webcam image
-- User can capture the webcam image with sticker
+- Improve the UI and UX  
+- User can choose a sticker (from multiple stickers)  
+- User can download the captured image / photo  
+- User can share the app to the social media  
 
-##What we want you to do
 
-Off course we didn't expect you to build a full fledged app in such a short time frame. That's why the basic requirements are already implemented.
+<br/>   
 
-However, we would like for you to show off your strengths as a developer by improving the app.
+## Quickstart  
 
-### Some ideas (no need to do all):
+- You can clone this repo to get started  
+- run `$ npm install` to install deps  
+- run `$ npm run start` to start dev environment  
+- push it to github or gitlab to share it with us  
 
-- Make it look really nice
-- Let users pick from multiple (custom) stickers
-- Improve the workflow and ux
-- Show multiple captured images in a gallery
-- Let users download or share the captured pics
-- Add super cool effects to webcam feed
-- Organize, document and test the code
-- Integrate with zoom, teams, meet...
+React libraries used:  
+- Create React App  
+- Jss  
+- React Router  
+- React Share
 
-### quickstart
+<br/>  
 
-- You can clone this repo to get started
-- run `$ npm install` to install deps
-- run `$ npm run start` to start dev environment
-- push it to github or gitlab to share it with us.
+## Credit  
+Additional stickers were sourced from:
+- `slap-cartoon.png` from [Pngtree](https://pngtree.com/element/down?id=NDU5NjY1Ng==&type=1&time=1648205516&token=Yjk5ODk1ZmQ1MjcxMGIwNDEzMDY4Y2UxNzg3OGIxNGI=)  
+- `slap-fast.png` from [Pngtree](https://pngtree.com/freepng/fan-ear-light-cartoon-gesture_4596656.html)  
+- `slap-orange.png` from [PngAAA](https://www.pngaaa.com/detail/2073428)  
+- `slap-green.png` from [PngAAA](https://www.pngaaa.com/detail/2073514)  
 
-P.s. We've already added some libraries to make your life easier (Create React App, Jss, React Router), but feel free to add more.
+<br/>  
 
 # Original Create React App
 
-# Getting Started with Create React App
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
