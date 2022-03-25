@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { createUseStyles } from "react-jss";
 import { useWebcamCapture } from "./useWebcamCapture";
-// import logo from './logo.svg'
+import { FacebookShareButton, PinterestIcon, PinterestShareButton, TwitterShareButton, WhatsappShareButton } from "react-share";
+import { FacebookIcon, TwitterIcon, WhatsappIcon } from "react-share";
+
 import sticker1 from './images/slap-ori.png'
 import sticker2 from './images/slap-orange.png'
 import sticker3 from './images/slap-cartoon.png'
@@ -33,7 +35,7 @@ const useStyles = createUseStyles((theme) => ({
     minHeight: "600px",
     margin: "auto",
     "& a": {
-      color: theme.palette.text,
+      textDecoration: "none",
     },
   },
   Header: {
@@ -51,6 +53,9 @@ const useStyles = createUseStyles((theme) => ({
     },
     "&  li": {
       paddingRight: "2rem",
+    },
+    "& a": {
+      color: theme.palette.text,
     },
   },
   Main: {
@@ -85,6 +90,18 @@ const useStyles = createUseStyles((theme) => ({
       width: "100%",
     },
   },
+  DownloadBtn: {
+    padding: "1rem 2rem",
+    background: theme.palette.button,
+    borderRadius: "25px",
+    color: "white",
+  },
+  Share: {
+    textAlign: "center",
+  },
+  ShareBtn: {
+    paddingRight: "5px",
+  }
 }));
 
 const stickers = [sticker1, sticker2, sticker3, sticker4, sticker5].map((url) => {
@@ -167,6 +184,32 @@ function App(props) {
                   <h3>{picture.title}</h3>
                 </div>
               )}
+              {picture && (
+                <a href={picture.dataUri} download target="_blank" role="button" className={classes.DownloadBtn}>Download</a>
+              )}
+            </section>
+            <section className={classes.Share}>
+              <p>Share this app to your friends who want to slap themselves too!</p>
+              <FacebookShareButton
+                url={"https://3000-dissyulina-slapstickerre-lyh5w20js28.ws-eu38.gitpod.io/"}
+                quote={"Check out this cool app!"}
+                hashtag={"#slapsticker"}
+                description={"Have you ever said something so dumb, you just wanted to slap yourself? Well now you can!"}>
+                <FacebookIcon size={40} round className={classes.ShareBtn}/>
+              </FacebookShareButton>
+              <TwitterShareButton
+                title={"SlapSticker - Check out this cool app!"}
+                url={"https://3000-dissyulina-slapstickerre-lyh5w20js28.ws-eu38.gitpod.io/"}
+                hashtags={["slapsticker", "slapyourself"]}
+                className={classes.Sharebtn}>
+                <TwitterIcon size={40} round className={classes.ShareBtn}/>
+              </TwitterShareButton>
+              <WhatsappShareButton
+                title={"SlapSticker - Check out this cool app!"} 
+                url={"https://3000-dissyulina-slapstickerre-lyh5w20js28.ws-eu38.gitpod.io/"} 
+                className={classes.Sharebtn}>
+                <WhatsappIcon size={40} round className={classes.ShareBtn}/>
+              </WhatsappShareButton>
             </section>
           </main>
         </Route>
