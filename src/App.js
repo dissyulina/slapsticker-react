@@ -2,7 +2,11 @@ import { useState } from "react";
 import { createUseStyles } from "react-jss";
 import { useWebcamCapture } from "./useWebcamCapture";
 // import logo from './logo.svg'
-import logo from './slap.png'
+import sticker1 from './images/slap-ori.png'
+import sticker2 from './images/slap-orange.png'
+import sticker3 from './images/slap-cartoon.png'
+import sticker4 from './images/slap-green.png'
+import sticker5 from './images/slap-fast.png'
 
 import { Link, Switch, Route, Redirect } from "react-router-dom";
 
@@ -83,7 +87,7 @@ const useStyles = createUseStyles((theme) => ({
   },
 }));
 
-const stickers = [logo].map((url) => {
+const stickers = [sticker1, sticker2, sticker3, sticker4, sticker5].map((url) => {
   const img = document.createElement("img");
   img.src = url;
   return { img, url };
