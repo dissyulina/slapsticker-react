@@ -1,9 +1,14 @@
 # SlapSticker  
-SlapSticker is an app that lets users to slap stickers on their face, using their webcam. You can view the deployed website [here](https://dissyulina.github.io/slapsticker-react/).  
+SlapSticker is an app that lets users to slap stickers on their face, using their webcam. This repository is built to improve the original app for the purpose of Ambassadors' technical test.   
+View the original repository [here](https://gitlab.com/AmbassadorsLab/react-dev-eval-2021)  
+View the deployed website after improvements [here](https://dissyulina.github.io/slapsticker-react/)   
 
-## What this app should do  
+<br/>  
 
-### These are the basic functionalities:  
+## Features and Functionalities  
+![SlapSticker App](full-page.png)
+
+### These are the basic / original functionalities:  
 
 - User can give the captured image a title  
 - User can pick a sticker  
@@ -12,11 +17,11 @@ SlapSticker is an app that lets users to slap stickers on their face, using thei
 
 ### And these are the additional features I added to the app:  
 
-- Improve the UI and UX  
+- UI and UX improvement  
 - User can choose a sticker (from multiple stickers)  
 - User can download the captured image / photo  
-- User can share the app to the social media  
-
+- User can share the app to social media  
+- App deployment so that user can access the URL directly  
 
 <br/>   
 

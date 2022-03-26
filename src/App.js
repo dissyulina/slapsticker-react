@@ -28,6 +28,8 @@ const useStyles = createUseStyles((theme) => ({
       fontWeight: "700",
       fontSize: "2rem",
       letterSpacing: "1px",
+      marginTop: "2.5rem",
+      marginBottom: "1rem",
     },
     padding: "20px",
     background: theme.palette.primary,
@@ -50,7 +52,7 @@ const useStyles = createUseStyles((theme) => ({
       fontSize: "4rem",
       fontWeight: "700",
       textAlign: "center",
-      marginBottom: "1rem",
+      margin: "1rem auto",
     },
     "&  ul": {
       listStyle: "none",
@@ -65,8 +67,9 @@ const useStyles = createUseStyles((theme) => ({
     "& a": {
       color: theme.palette.text,
     },
-    "& a:hover": {
-      color: theme.palette.button,
+    "& li:hover": {
+      transform: "translateY(-0.1rem)",
+      transition: "transform 150ms",
     },
   },
   Name: {
@@ -132,7 +135,8 @@ const useStyles = createUseStyles((theme) => ({
     textAlign: "center",
     "& p": {
       paddingTop: "2rem",
-    }
+    },
+    marginBottom: "1rem",
   },
   ShareBtn: {
     paddingRight: "5px",
@@ -208,6 +212,7 @@ function App(props) {
             </section>
             <section className={classes.Main}>
               <h2>Step 3: Slap your self!</h2>
+              <p>Click anywhere on the camera screen to capture your photo.</p>
               <video ref={handleVideoRef} />
               <canvas
                 ref={handleCanvasRef}
