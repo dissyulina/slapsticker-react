@@ -10,7 +10,7 @@ import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/slapsticker-react">
       <ThemeProvider theme={theme}>
         <App />
       </ThemeProvider>

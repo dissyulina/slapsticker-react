@@ -217,7 +217,7 @@ function App(props) {
               />
             </section>
             <section className={classes.Gallery}>
-              <h2>Step 4: Cherish this moment forever</h2>
+              {picture && (<h2>Step 4: Cherish this moment forever</h2>)}
               {picture && (
                 <div className={classes.Picture}>
                   <img src={picture.dataUri} alt="the captured selfie with the sticker" />
@@ -267,7 +267,7 @@ function App(props) {
               <h3>What this app should do</h3>
               <p>
                 SlapSticker is an app that lets users to slap stickers on their
-                face, using their webcam. 
+                face, using their webcam.
               </p>
               <p>These are the functionalities:</p>
               <ul>
