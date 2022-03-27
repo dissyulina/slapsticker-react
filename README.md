@@ -20,6 +20,8 @@ View the deployed website after improvements [here](https://dissyulina.github.io
 - UI and UX improvement  
 - User can choose a sticker (from multiple stickers)  
 - User can download the captured image / photo  
+- User can make a collage of multiple photos
+- User can download the collage
 - User can share the app to social media  
 - App deployment so that user can access the URL directly  
 
@@ -33,10 +35,16 @@ View the deployed website after improvements [here](https://dissyulina.github.io
 - push it to github or gitlab to share it with us  
 
 React libraries used:  
-- Create React App  
-- Jss  
-- React Router  
-- React Share
+- [Create React App](https://create-react-app.dev/)  
+    A tool to build cofigurations and setup needed for a React application.
+- [Jss](https://cssinjs.org/?v=v10.9.0)  
+   An authoring tool for CSS which allows you to use JavaScript to describe styles in a declarative, conflict-free and reusable way.
+- [React Router](https://reactrouter.com/)  
+   A page routing for React aplications.
+- [React Share](https://github.com/nygardk/react-share)  
+   A library to incorporate social media share buttons and share counts for React.
+- [React Screenshot (with html2canvas as a dependency)](https://github.com/vre2h/use-react-screenshot)  
+   A react hook which allows you to make component screenshot and get an image in different extensions.
 
 <br/>  
 

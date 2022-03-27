@@ -285,7 +285,7 @@ function App(props) {
               <div ref={refCollage}>
                 {gallery.map((photo, index) =>
                   <div className={classes.CollagePicture}>
-                    <img key={index} src={photo.dataUri} />
+                    <img key={index} src={photo.dataUri} alt="slap collage" />
                     <h4>{photo.title}</h4>
                   </div>
                 )}
