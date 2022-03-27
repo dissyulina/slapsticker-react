@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, createRef } from "react";
 import { createUseStyles } from "react-jss";
 import { useWebcamCapture } from "./useWebcamCapture";
+import { useScreenshot, createFileName } from 'use-react-screenshot';
 import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, PinterestShareButton } from "react-share";
 import { FacebookIcon, TwitterIcon, WhatsappIcon, PinterestIcon } from "react-share";
 
@@ -110,10 +111,21 @@ const useStyles = createUseStyles((theme) => ({
     position: "relative",
     display: "inline-block",
     "& h3": {
-      padding: 8,
-      textAlign: "start",
-      width: "100%",
-      margin: "1rem 0",
+      textAlign: "center",
+    },
+  },
+  Collage: {
+    "& img": {
+      height: "12rem",
+    },
+  },
+  CollagePicture: {
+    background: "white",
+    padding: "0.5rem",
+    position: "relative",
+    display: "inline-block",
+    "& h3": {
+      textAlign: "center",
     },
   },
   Flex: {
@@ -129,7 +141,7 @@ const useStyles = createUseStyles((theme) => ({
     background: theme.palette.button,
     borderRadius: "25px",
     color: "white",
-    margin: "1rem 0"
+    margin: "1rem"
   },
   Share: {
     textAlign: "center",
@@ -162,6 +174,30 @@ function App(props) {
   const [sticker, setSticker] = useState();
   // title for the picture that will be captured
   const [title, setTitle] = useState("SLAPPE!");
+
+  // to download the captured photo
+  const refPhoto = createRef(null)
+  const [image, takeScreenShot] = useScreenshot({
+    type: "image/png",
+    quality: 1.0,
+  });
+  const download = (image, { name = "photo", extension = "png" } = {}) => {
+    const a = document.createElement("a");
+    a.href = image;
+    a.download = createFileName(extension, name);
+    a.click();
+  };
+  const downloadPhoto = () => takeScreenShot(refPhoto.current).then(download);
+
+  // to add photo to be collaged
+  const [gallery, setGallery] = useState([]);
+  const addToGallery = (picture) => {
+    setGallery(gallery => [...gallery, picture]);
+  };
+
+  // to download the collaged photos
+  const refCollage = createRef(null);
+  const downloadCollage = () => takeScreenShot(refCollage.current).then(download);
 
   // webcam behavior hook
   const [
@@ -224,14 +260,43 @@ function App(props) {
             <section className={classes.Gallery}>
               {picture && (<h2>Step 4: Cherish this moment forever</h2>)}
               {picture && (
-                <div className={classes.Picture}>
+                <div className={classes.Picture} ref={refPhoto}>
                   <img src={picture.dataUri} alt="the captured selfie with the sticker" />
-                  <div className={classes.Flex}>
-                    <h3>{picture.title}</h3>
-                    <a href={picture.dataUri} download target="_blank" rel="noreferrer" role="button" className={classes.DownloadBtn}>Download</a>
-                  </div>
+                  <h3>{picture.title}</h3>
                 </div>
               )}
+              {picture && (
+                <div>
+                  <button className={classes.DownloadBtn} onClick={downloadPhoto} style={{ border: 0 }} >
+                    Download This Photo
+                  </button>
+                  <span>or</span>
+                  <button className={classes.DownloadBtn} onClick={() => addToGallery(picture)} style={{ border: 0, marginRight: 10 }}>Add to Collage</button>
+                </div>
+              )}
+            </section>
+            <section className={classes.Collage}>
+              {picture && (gallery.length > 0) && (
+                <div>
+                  <h2>Step 5: Collage these memories</h2>
+                  <p>Repeat from step 1 and add more slap photos to the collage!</p>
+                </div>
+              )}
+              <div ref={refCollage}>
+                {gallery.map((photo, index) =>
+                  <div className={classes.CollagePicture}>
+                    <img key={index} src={photo.dataUri} />
+                    <h4>{photo.title}</h4>
+                  </div>
+                )}
+              </div>
+              <div>
+                {picture && (gallery.length > 0) && (
+                  <button className={classes.DownloadBtn} onClick={downloadCollage} style={{ border: 0 }} >
+                    Download Photo Collage
+                  </button>
+                )}
+              </div>
             </section>
             <section className={classes.Share}>
               <p>Share this app to your friends who want to slap themselves too!</p>
