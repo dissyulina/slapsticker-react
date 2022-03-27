@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/slapsticker-react/static/js/main.977c481f.chunk.js",
-    "main.js.map": "/slapsticker-react/static/js/main.977c481f.chunk.js.map",
-    "runtime-main.js": "/slapsticker-react/static/js/runtime-main.41fb4d31.js",
-    "runtime-main.js.map": "/slapsticker-react/static/js/runtime-main.41fb4d31.js.map",
+    "main.js": "/slapsticker-react/static/js/main.8b880853.chunk.js",
+    "main.js.map": "/slapsticker-react/static/js/main.8b880853.chunk.js.map",
+    "runtime-main.js": "/slapsticker-react/static/js/runtime-main.19b45de3.js",
+    "runtime-main.js.map": "/slapsticker-react/static/js/runtime-main.19b45de3.js.map",
     "static/css/2.679831fc.chunk.css": "/slapsticker-react/static/css/2.679831fc.chunk.css",
-    "static/js/2.27a12b5e.chunk.js": "/slapsticker-react/static/js/2.27a12b5e.chunk.js",
-    "static/js/2.27a12b5e.chunk.js.map": "/slapsticker-react/static/js/2.27a12b5e.chunk.js.map",
-    "static/js/3.b632f791.chunk.js": "/slapsticker-react/static/js/3.b632f791.chunk.js",
-    "static/js/3.b632f791.chunk.js.map": "/slapsticker-react/static/js/3.b632f791.chunk.js.map",
+    "static/js/2.9455f019.chunk.js": "/slapsticker-react/static/js/2.9455f019.chunk.js",
+    "static/js/2.9455f019.chunk.js.map": "/slapsticker-react/static/js/2.9455f019.chunk.js.map",
+    "static/js/3.bbf4ff4d.chunk.js": "/slapsticker-react/static/js/3.bbf4ff4d.chunk.js",
+    "static/js/3.bbf4ff4d.chunk.js.map": "/slapsticker-react/static/js/3.bbf4ff4d.chunk.js.map",
     "index.html": "/slapsticker-react/index.html",
     "static/css/2.679831fc.chunk.css.map": "/slapsticker-react/static/css/2.679831fc.chunk.css.map",
-    "static/js/2.27a12b5e.chunk.js.LICENSE.txt": "/slapsticker-react/static/js/2.27a12b5e.chunk.js.LICENSE.txt",
+    "static/js/2.9455f019.chunk.js.LICENSE.txt": "/slapsticker-react/static/js/2.9455f019.chunk.js.LICENSE.txt",
     "static/media/slap-cartoon.243e7374.png": "/slapsticker-react/static/media/slap-cartoon.243e7374.png",
     "static/media/slap-fast.757dc4ff.png": "/slapsticker-react/static/media/slap-fast.757dc4ff.png",
     "static/media/slap-green.c7cac66f.png": "/slapsticker-react/static/media/slap-green.c7cac66f.png",
@@ -19,9 +19,9 @@
     "static/media/slap-ori.5f0cd602.png": "/slapsticker-react/static/media/slap-ori.5f0cd602.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.41fb4d31.js",
+    "static/js/runtime-main.19b45de3.js",
     "static/css/2.679831fc.chunk.css",
-    "static/js/2.27a12b5e.chunk.js",
-    "static/js/main.977c481f.chunk.js"
+    "static/js/2.9455f019.chunk.js",
+    "static/js/main.8b880853.chunk.js"
   ]
 }
